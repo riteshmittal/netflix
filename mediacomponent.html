@@ -1,0 +1,31 @@
+<sly data-sly-use.template="core/wcm/components/commons/v1/templates.html"
+   data-sly-call="${template.placeholder @ isEmpty=true }"></sly>
+<!--/* Imports */-->
+<sly
+   data-sly-use.model="${'com.aem.community.core.models.MediaContainerModel'}" />
+<!--/* HTML */-->
+<section class="">
+   <div>
+      <h4 data-sly-text="${model.title}"></h4>
+      <b> <a href="tagsdemo.horror.html">Horror</a> | 
+      <a href="tagsdemo.action.html">Action</a> | 
+      <a href="tagsdemo.thriller.html">Thriller</a> </b>
+   </div>
+   <div>
+   <table style="width:100%; border-spacing: 8px !important;border-collapse: separate !important;">
+      <!--/* Existing slides */-->
+      <tr>
+         <sly data-sly-list.mediaModel="${model.slides}">
+            <td style="height:150px;width:180px;">
+               <sly
+                  data-sly-resource="${@path= mediaModel.path, resourceType='weretail/components/content/image', decorationTagName='div'}" />
+            </td>
+         </sly>
+      </tr>
+   </table>
+   <!--/* New slide */-->
+   <div>
+      <div data-sly-resource="${'*' @ resourceType='AEMMaven13/components/content/responsivegrid'}">
+      </div>
+   </div>
+</section>
